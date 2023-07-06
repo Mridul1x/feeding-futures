@@ -5,8 +5,18 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  theme: {
-    extend: {},
+  daisyui: {
+    themes: [
+      {
+        dark: {
+          ...require("daisyui/src/theming/themes")["[data-theme=dark]"],
+          primary: "blue",
+          "primary-focus": "mediumblue",
+          accent: "#3f66da",
+          secondary: "#738f8c",
+        },
+      },
+    ],
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };

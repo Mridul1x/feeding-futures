@@ -1,26 +1,34 @@
-import NavBar from '@/components/NavBar'
-import './globals.css'
-import { Inter } from 'next/font/google'
-import Footer from '@/components/Footer'
+import { ReduxProvider } from "@/store/provider";
+import { Bai_Jamjuree } from "next/font/google";
+import { Toaster } from "react-hot-toast";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import "./globals.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const baiJamjuree = Bai_Jamjuree({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata = {
-  title: 'Feeding Futures',
-}
+  title: "Feeding Futures | Home",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <NavBar/>
-        {children}
-        <Footer/>
-        </body>
+      <body className={baiJamjuree.className}>
+        <ReduxProvider>
+          <Toaster />
+          <Navbar />
+          {children}
+          <Footer />
+        </ReduxProvider>
+      </body>
     </html>
-  )
+  );
 }

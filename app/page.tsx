@@ -1,10 +1,19 @@
-import React from 'react';
-import Page from './About/page';
+import Consumers from "@/components/Consumers";
+import Hero from "@/components/Hero";
+import Providers from "@/components/Providers";
+import Testimonials from "@/components/Testimonials";
+import Gallery from "@/components/Gallery";
+import OurVision from "@/components/OurVision";
 
 const HomePage = () => {
   return (
-    <main>
-    <Page></Page>
+    <main className="mt-16">
+      <Hero />
+      <OurVision />
+      <Providers />
+      <Consumers />
+      <Gallery />
+      <Testimonials />
     </main>
   );
 };
