@@ -96,6 +96,13 @@ const Navbar = () => {
         </div>
         <Link href="/" className="btn btn-ghost normal-case text-xl">
           Feeding Futures
+          {/* <Image
+            src="https://i.ibb.co/WfGNVRd/Logo.png"
+            alt="Logo of Feeding Futures"
+            width={140}
+            height={100}
+            priority
+          /> */}
         </Link>
       </nav>
 

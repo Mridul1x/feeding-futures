@@ -35,6 +35,7 @@ To install Feeding Futures Client, follow these simple steps:
 3. Create a `.env` file in the root directory and add the following variables:
    - `NEXT_PUBLIC_BASE_URL`
 4. Start the application by running `npm run dev`.
+5. For accessing the `Admin Dashboard` you can login by this Email: `medul@admin.com` and password `Abc12345!`.
 
 ## Contribution
 

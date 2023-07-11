@@ -28,7 +28,7 @@ const RegisterPage = () => {
 
   useEffect(() => {
     if (userStore?.user) {
-      router.push("/profile");
+      router.push("/"); //TODO add /profile
     }
   }, [router, userStore?.user]);
 
@@ -40,7 +40,7 @@ const RegisterPage = () => {
 
       if (data) {
         dispatch(login(data));
-        router.push("/profile");
+        router.push("/"); //TODO add /profile
         toast.success("Successfully registered.");
 
         setFormData({
