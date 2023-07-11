@@ -1,8 +1,8 @@
 export const metadata = {
-  title: "Elysian Feeds | Register",
+  title: "Elysian Feeds | Admin Dashboard",
 };
 
-export default function RegisterLayout({
+export default function AdminDashboardLayout({
   children,
 }: {
   children: React.ReactNode;

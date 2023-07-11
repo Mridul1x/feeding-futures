@@ -16,8 +16,8 @@ import "@smastrom/react-rating/style.css";
 
 const myStyles = {
   itemShapes: RoundedStar,
-  activeFillColor: "#3f66da",
-  inactiveFillColor: "rgb(63, 102, 218, 0.3)",
+  activeFillColor: "#1fb2a6",
+  inactiveFillColor: "rgba(31, 178, 166, 0.3)",
 };
 
 const Testimonials = () => {
@@ -56,7 +56,7 @@ const Testimonials = () => {
                 </div>
                 <p
                   data-swiper-parallax="-200%"
-                  className="text-xl max-w-2xl text-center"
+                  className="md:text-xl max-w-2xl text-center"
                 >
                   {review.body}
                 </p>

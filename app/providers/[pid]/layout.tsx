@@ -1,8 +1,8 @@
 export const metadata = {
-  title: "Elysian Feeds | Register",
+  title: "Elysian Feeds | Provider Details",
 };
 
-export default function RegisterLayout({
+export default function ProviderLayout({
   children,
 }: {
   children: React.ReactNode;

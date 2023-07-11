@@ -26,6 +26,10 @@
   background-color: #3f66da;
 }
 
+/* li {
+  color: white;
+} */
+
 html {
   --scroll-behavior: smooth !important;
   scroll-behavior: smooth !important;
