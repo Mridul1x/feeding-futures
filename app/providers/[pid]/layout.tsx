@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Elysian Feeds | Provider Details",
+  title: "Feeding Futures | Provider Details",
 };
 
 export default function ProviderLayout({

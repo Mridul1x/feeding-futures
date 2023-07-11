@@ -23,7 +23,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (userStore?.user) {
-      router.push("/profile");
+      router.push("/"); //TODO: Add /profile
     }
   }, [router, userStore?.user]);
 
@@ -35,7 +35,7 @@ const LoginPage = () => {
 
       if (data) {
         dispatch(login(data));
-        router.push("/profile");
+        router.push("/"); //TODO: Add /profile
         toast.success("Successfully logged in.");
 
         setFormData({
