@@ -1,56 +1,67 @@
-"use client";
-
-import { motion } from "framer-motion";
+import React from "react";
+import { useRouter } from "next/router";
+import ConsumerLayout from "./layout";
+import useFetch from "@/hooks/useFetch"; // Import your useFetch hook
 import Image from "next/image";
-import Link from "next/link";
 
-interface ConsumerCardProps {
-  id: string;
-  name: string;
-  image: string;
-  address: string;
-  consumptions: number;
-  index: number;
-}
+const ConsumerDetailsPage: React.FC = () => {
+  const router = useRouter();
+  const { cid } = router.query;
 
-const ConsumerDetailsPage: React.FC<ConsumerCardProps> = ({
-  index,
-  id,
-  name,
-  image,
-  address,
-  consumptions,
-}) => {
+  // Fetch consumer data based on the 'cid' parameter
+  const {
+    data: consumerData,
+    error,
+    isLoading,
+  } = useFetch(cid ? `/api/consumers/${cid}` : "");
+
+  if (isLoading) {
+    // Render a loading state while fetching data
+    return (
+      <ConsumerLayout>
+        <main className="mt-16">Loading...</main>
+      </ConsumerLayout>
+    );
+  }
+
+  if (error) {
+    // Handle and render error state
+    return (
+      <ConsumerLayout>
+        <main className="mt-16">Error: {error.message}</main>
+      </ConsumerLayout>
+    );
+  }
+
+  if (!consumerData) {
+    // Render a fallback state when data is not available
+    return (
+      <ConsumerLayout>
+        <main className="mt-16">Consumer data not found.</main>
+      </ConsumerLayout>
+    );
+  }
+
+  // Render the consumer details on a card
   return (
-    <div className="overflow-hidden mx-auto">
-      <motion.div
-        initial={{ y: "-100%" }}
-        whileInView={{ y: 0 }}
-        transition={{ ease: "easeInOut", duration: 1.35, delay: index / 10 }}
-        className="card w-full bg-base-300 shadow-xl"
-      >
-        <figure>
+    <ConsumerLayout>
+      <main className="mt-16">
+        <div className="card">
           <Image
-            src={image}
-            alt={name}
+            src={consumerData.image}
+            alt={consumerData.name}
             width={500}
             height={500}
             priority
             className="h-60 w-full object-cover"
           />
-        </figure>
-        <div className="card-body">
-          <h2 className="card-title truncate">{name}</h2>
-          <p className="truncate">Address: {address}</p>
-          <p className="truncate">Total Consumptions: {consumptions}</p>
-          <div className="card-actions justify-start mt-3 md:mt-0">
-            <Link href={`/consumers/${id}`} className="btn btn-accent">
-              View Details
-            </Link>
-          </div>
+          <h1>{consumerData.name}</h1>
+          <p>Address: {consumerData.address}</p>
+          <p>Total Consumptions: {consumerData.consumptions}</p>
+          {/* Add other consumer details here */}
         </div>
-      </motion.div>
-    </div>
+      </main>
+    </ConsumerLayout>
   );
 };
 
