@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={baiJamjuree.className}>
         <ReduxProvider>
-          <Toaster />
+          <Toaster position="bottom-left" toastOptions={{ duration: 5000 }} />
           <Navbar />
           {children}
           <Footer />

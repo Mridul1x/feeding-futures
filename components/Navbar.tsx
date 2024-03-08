@@ -1,13 +1,13 @@
 "use client";
 
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store/store";
 import { logout } from "@/features/auth/userSlice";
+import { RootState } from "@/store/store";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 import { useCallback } from "react";
 import { toast } from "react-hot-toast";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
 
 const Navbar = () => {
   const user = useSelector((state: RootState) => state?.user?.user?.user);
@@ -28,10 +28,10 @@ const Navbar = () => {
         <Link href="/#our-vision">Our Vision</Link>
       </li>
       <li>
-        <Link href="/#top-providers">Top Providers</Link>
+        <Link href="/#top-providers">Providers</Link>
       </li>
       <li>
-        <Link href="/#top-consumers">Top Consumers</Link>
+        <Link href="/#top-consumers">Consumers</Link>
       </li>
       {user && user.role === "user" && (
         <li>
@@ -96,13 +96,6 @@ const Navbar = () => {
         </div>
         <Link href="/" className="btn btn-ghost normal-case text-xl">
           Feeding Futures
-          {/* <Image
-            src="https://i.ibb.co/WfGNVRd/Logo.png"
-            alt="Logo of Feeding Futures"
-            width={140}
-            height={100}
-            priority
-          /> */}
         </Link>
       </nav>
 

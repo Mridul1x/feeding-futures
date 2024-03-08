@@ -1,14 +1,14 @@
 "use client";
 
-import { useCallback, useState, useEffect } from "react";
+import SectionTitle from "@/components/SectionTitle";
+import { login } from "@/features/auth/userSlice";
 import { axiosPost } from "@/lib/axiosPost";
+import { RootState } from "@/store/store";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "@/features/auth/userSlice";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import SectionTitle from "@/components/SectionTitle";
-import { RootState } from "@/store/store";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +28,7 @@ const RegisterPage = () => {
 
   useEffect(() => {
     if (userStore?.user) {
-      router.push("/"); //TODO add /profile
+      router.push("/profile");
     }
   }, [router, userStore?.user]);
 
@@ -36,11 +36,20 @@ const RegisterPage = () => {
     async (e: React.SyntheticEvent) => {
       e.preventDefault();
 
+      const isValidPhotoUrl: boolean =
+        formData.image.includes("images.pexels.com") ||
+        formData.image.includes("images.unsplash.com");
+
+      if (!isValidPhotoUrl) {
+        toast.error("Please enter a valid photo URL from Unsplash or Pexels.");
+        return;
+      }
+
       const data = await axiosPost("/api/users/register", { ...formData });
 
       if (data) {
         dispatch(login(data));
-        router.push("/"); //TODO add /profile
+        router.push("/profile");
         toast.success("Successfully registered.");
 
         setFormData({
@@ -149,7 +158,7 @@ const RegisterPage = () => {
                   }
                   type="text"
                   id="image"
-                  placeholder="paste any image from https://www.pexels.com"
+                  placeholder="paste any image link from pexels or unsplash"
                   className="input input-bordered"
                 />
               </div>

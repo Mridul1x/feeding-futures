@@ -4,6 +4,8 @@ import Providers from "@/components/Providers";
 import Testimonials from "@/components/Testimonials";
 import Gallery from "@/components/Gallery";
 import OurVision from "@/components/OurVision";
+import OurStory from "@/components/OurStory";
+import Blogs from "@/components/Blogs";
 
 const HomePage = () => {
   return (
@@ -12,8 +14,11 @@ const HomePage = () => {
       <OurVision />
       <Providers />
       <Consumers />
+      <OurStory fromHome />
       <Gallery />
       <Testimonials />
+      <Blogs />
+      {/* <Contact /> */}
     </main>
   );
 };
